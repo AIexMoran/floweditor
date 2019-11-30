@@ -25,6 +25,7 @@ public class DeleteState extends ComponentState {
     @Override
     public void onPress(MouseEvent event, Component component) {
         List<ComponentPair> pairs = ComponentService.getComponentService().getPairs();
+
         for (int i = 0; i < pairs.size(); i++) {
             if (pairs.get(i).contain(component)) {
                 ComponentService.getComponentService().removeLine(pairs.get(i));

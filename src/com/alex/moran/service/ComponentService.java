@@ -86,6 +86,7 @@ public class ComponentService {
         pair.getFirstComponent().update();
         pair.getSecondComponent().update();
         pane.getChildren().remove(pair.getLine());
+        ButtonService.getButtonService().clearEffects();
         return componentPairs.remove(pair);
     }
 
