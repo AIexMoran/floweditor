@@ -34,6 +34,7 @@ public abstract class Component {
     private ComponentCircle[] upCircles = new ComponentCircle[4];
     private ComponentCircle[] downCircles = new ComponentCircle[4];
     private static CreateLineState circleState = CreateLineState.getCreateLineState();
+    private int color;
 
     public Component(double x, double y) {
         init();
@@ -90,6 +91,12 @@ public abstract class Component {
             state.onPress(event, this);
             updateCircles();
         });
+    }
+
+    public void setStyleColor(String color) {
+        gridPane.setStyle(color
+                + "-fx-border-radius: 12 12 12 12;"
+                + "-fx-background-radius: 12 12 12 12");
     }
 
     public GridPane getGridPane() {
@@ -314,7 +321,15 @@ public abstract class Component {
             return downCircles[id];
         }
     }
-    
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
     public class ComponentCircle {
         
         private boolean up;

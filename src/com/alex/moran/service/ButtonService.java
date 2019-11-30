@@ -4,6 +4,7 @@ package com.alex.moran.service;
 import com.alex.moran.model.component.Component;
 import com.alex.moran.model.component.state.CreateLineState;
 import com.alex.moran.model.component.state.DeleteState;
+import com.alex.moran.model.component.state.FillColorState;
 import com.alex.moran.model.component.state.MoveState;
 import com.alex.moran.model.xml.SaveXml;
 import com.alex.moran.model.xml.UploadXml;
@@ -43,7 +44,10 @@ public class ButtonService {
     }
 
     private void setButtons() {
+        Glow glow = new Glow();
         Image image = new Image(getClass().getResourceAsStream("createTable.png"));
+
+        glow.setLevel(1.2);
         addButton(new ImageView(image), event -> {
             buttonsWithImages.get(1).setEffect(null);
             ComponentService.getComponentService().addComponent();
@@ -51,14 +55,22 @@ public class ButtonService {
         });
         image = new Image(getClass().getResourceAsStream("delete.png"));
         addButton(new ImageView(image), event -> {
-            Glow glow = new Glow();
-            glow.setLevel(1.2);
             buttonsWithImages.get(1).setEffect(glow);
             if (Component.getState().equals(DeleteState.getDeleteState())) {
                 buttonsWithImages.get(1).setEffect(null);
                 Component.setState(MoveState.getMoveState());
             } else {
                 Component.setState(DeleteState.getDeleteState());
+            }
+        });
+        image = new Image(getClass().getResourceAsStream("fillColor.png"));
+        addButton(new ImageView(image), event -> {
+            buttonsWithImages.get(2).setEffect(glow);
+            if (Component.getState().equals(FillColorState.getFillColorState())) {
+                buttonsWithImages.get(2).setEffect(null);
+                Component.setState(MoveState.getMoveState());
+            } else {
+                Component.setState(FillColorState.getFillColorState());
             }
         });
         image = new Image(getClass().getResourceAsStream("save.png"));
@@ -84,7 +96,6 @@ public class ButtonService {
             if (file != null) {
                 UploadXml.getUploadXml().readXml(file);
             }
-
         });
     }
 
