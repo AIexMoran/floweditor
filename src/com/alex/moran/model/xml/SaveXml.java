@@ -52,16 +52,23 @@ public class SaveXml {
         Element rootElement = doc.createElement("floweditor");
         Element componentsElement = doc.createElement("components");
         for (Component component : ComponentService.getComponentService().getComponents()) {
-            Element componentElement = doc.createElement(component.getLabel().getText());
+            Element componentElement = doc.createElement("component");
             Element idElement = doc.createElement("id");
             Element xElement = doc.createElement("x");
             Element yElement = doc.createElement("y");
+            Element textElement = doc.createElement("text");
+            Element colorElement = doc.createElement("color");
+
+            textElement.appendChild(doc.createTextNode(component.getLabel().getText()));
+            colorElement.appendChild(doc.createTextNode(component.getColor() + ""));
             xElement.appendChild(doc.createTextNode(component.getGridPane().getLayoutX() + ""));
             yElement.appendChild(doc.createTextNode(component.getGridPane().getLayoutY() + ""));
             idElement.appendChild(doc.createTextNode(component.hashCode() + ""));
             componentElement.appendChild(idElement);
             componentElement.appendChild(xElement);
             componentElement.appendChild(yElement);
+            componentElement.appendChild(textElement);
+            componentElement.appendChild(colorElement);
             componentsElement.appendChild(componentElement);
         }
         Element componentPairsElement = doc.createElement("componentPairs");

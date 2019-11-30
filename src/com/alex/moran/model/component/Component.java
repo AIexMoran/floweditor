@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public abstract class Component {
-
+    public static final String[] colors = new String[4];
     protected String title;
     protected double width;
     protected double height;
@@ -38,10 +38,11 @@ public abstract class Component {
     private static CreateLineState circleState = CreateLineState.getCreateLineState();
     private int color;
 
-    public Component(double x, double y) {
+    public Component(double x, double y, String text) {
         init();
         gridPane.setLayoutX(x);
         gridPane.setLayoutY(y);
+        label.setText(text);
     }
 
     public Component() {
@@ -81,6 +82,7 @@ public abstract class Component {
                 circleState.onPress(event, this, tmpComponentCircle);
             });
         }
+        label = new Label("Component");
         gridPane = new GridPane();
         gridPane.setOnMouseReleased(event -> {
             state.onReleased(event, this);
@@ -93,6 +95,14 @@ public abstract class Component {
             state.onPress(event, this);
             updateCircles();
         });
+        initColors();
+    }
+
+    private void initColors() {
+        colors[0] = "-fx-background-color: #5a5a5a;";
+        colors[1] = "-fx-background-color: #48b84f;";
+        colors[2] = "-fx-background-color: #acb848;";
+        colors[3] = "-fx-background-color: #b84848;";
     }
 
     public void setStyleColor(String color) {

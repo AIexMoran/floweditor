@@ -7,13 +7,9 @@ import javafx.scene.input.MouseEvent;
 public class FillColorState extends ComponentState {
 
     private static FillColorState instance;
-    private static final String[] colors = new String[4];
 
     private FillColorState() {
-        colors[0] = "-fx-background-color: #5a5a5a;";
-        colors[1] = "-fx-background-color: #48b84f;";
-        colors[2] = "-fx-background-color: #acb848;";
-        colors[3] = "-fx-background-color: #b84848;";
+
     }
 
     public static FillColorState getFillColorState() {
@@ -33,7 +29,7 @@ public class FillColorState extends ComponentState {
             currentColor++;
         }
         component.setColor(currentColor);
-        component.setStyleColor(colors[currentColor]);
+        component.setStyleColor(Component.colors[currentColor]);
     }
 
     @Override

@@ -8,9 +8,12 @@ import javafx.scene.text.Font;
 
 public class ThreatComponent extends Component {
 
-    public ThreatComponent(double x, double y) {
-        super(x, y);
+    public ThreatComponent(double x, double y, String text, int color) {
+        super(x, y, text);
+        this.label.setText(text);
         setSize();
+        setColor(color);
+        setStyleColor(colors[color]);
     }
 
     public ThreatComponent() {
@@ -21,6 +24,7 @@ public class ThreatComponent extends Component {
         }
         gridPane.setLayoutX(show);
         gridPane.setLayoutY(show);
+        setStyleColor(colors[0]);
     }
 
     public void setSize() {
@@ -35,14 +39,12 @@ public class ThreatComponent extends Component {
         dropShadow.setOffsetY(0);
         dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
         gridPane.setEffect(dropShadow);
-        gridPane.setStyle("-fx-background-color: #5a5a5a;"
-                + "-fx-border-radius: 12 12 12 12;"
+        gridPane.setStyle("-fx-border-radius: 12 12 12 12;"
                 + "-fx-background-radius: 12 12 12 12");
         addElements();
     }
 
     public void addElements() {
-        this.label = new Label("Component");
         this.label.setWrapText(true);
         this.label.setStyle("-fx-padding: 7px;");
         this.label.setFont(new Font("Arial", 16));

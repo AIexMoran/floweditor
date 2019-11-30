@@ -51,7 +51,9 @@ public class UploadXml {
                 double x = Double.parseDouble(component.getElementsByTagName("x").item(0).getTextContent());
                 double y = Double.parseDouble(component.getElementsByTagName("y").item(0).getTextContent());
                 int id = Integer.parseInt(component.getElementsByTagName("id").item(0).getTextContent());
-                componentMap.put(id, new ThreatComponent(x, y));
+                int color = Integer.parseInt(component.getElementsByTagName("color").item(0).getTextContent());
+                String text = component.getElementsByTagName("text").item(0).getTextContent();
+                componentMap.put(id, new ThreatComponent(x, y, text, color));
                 ComponentService.getComponentService().loadComponent(componentMap.get(id));
             }
         }
