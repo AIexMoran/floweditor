@@ -11,6 +11,7 @@ import com.alex.moran.service.ButtonService;
 import com.alex.moran.service.ComponentService;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -50,8 +51,14 @@ public abstract class Component {
     }
 
     public void init() {
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setRadius(20.0);
+        dropShadow.setOffsetX(0);
+        dropShadow.setOffsetY(0);
+        dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
         for (int i = 0; i < upCircles.length; i++) {
             upCircles[i] = new ComponentCircle(true, i, this);
+            upCircles[i].circle.setEffect(dropShadow);
             upCircles[i].getCircle().setVisible(false);
             upCircles[i].getCircle().setFill(Color.SALMON);
             upCircles[i].getCircle().setOnMouseReleased(event -> {
@@ -68,6 +75,7 @@ public abstract class Component {
         }
         for (int i = 0; i < downCircles.length; i++) {
             downCircles[i] = new ComponentCircle(false, i, this);
+            downCircles[i].circle.setEffect(dropShadow);
             downCircles[i].getCircle().setVisible(false);
             downCircles[i].getCircle().setFill(Color.SALMON);
             downCircles[i].getCircle().setOnMouseReleased(event -> {

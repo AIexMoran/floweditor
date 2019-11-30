@@ -34,7 +34,7 @@ public class ThreatComponent extends Component {
         gridPane.setMaxSize(width, height);
         title = "title" + Math.random();
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(6.0);
+        dropShadow.setRadius(20.0);
         dropShadow.setOffsetX(0);
         dropShadow.setOffsetY(0);
         dropShadow.setColor(Color.color(0.4, 0.5, 0.5));

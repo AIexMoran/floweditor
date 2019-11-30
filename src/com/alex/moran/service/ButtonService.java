@@ -123,10 +123,10 @@ public class ButtonService {
 
     public GridPane getButtonsPane() {
         gridPane = new GridPane();
-        gridPane.setStyle("-fx-background-color: #C4C3C3;");
+        gridPane.setStyle("-fx-background-color: #3b3b3b;");
         gridPane.setVgap(10);
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(6.0);
+        dropShadow.setRadius(7.0);
         dropShadow.setOffsetX(4.0);
         dropShadow.setOffsetY(4.0);
         dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
