@@ -80,6 +80,12 @@ public class ButtonService {
                 Component.setState(EditTextState.getEditTextState());
             }
         });
+        image = new Image(getClass().getResourceAsStream("clear.png"));
+        addButton(new ImageView(image), event -> {
+            ComponentService.getComponentService().clearPane();
+            clearEffects();
+            Component.setState(MoveState.getMoveState());
+        });
         image = new Image(getClass().getResourceAsStream("save.png"));
         addButton(new ImageView(image), event -> {
             FileChooser fileChooser = new FileChooser();
