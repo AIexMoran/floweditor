@@ -29,6 +29,8 @@ public class ComponentService {
     
     public void clearPane() {
         pane.getChildren().clear();
+        components.clear();
+        componentPairs.clear();
     }
     
     public void addTmpLine(Line line) {
