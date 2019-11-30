@@ -6,6 +6,9 @@ import com.alex.moran.model.component.state.CreateLineState;
 import com.alex.moran.model.component.state.MoveState;
 import java.util.Arrays;
 import java.util.Objects;
+
+import com.alex.moran.service.ButtonService;
+import com.alex.moran.service.ComponentService;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;

@@ -45,6 +45,7 @@ public class ButtonService {
     private void setButtons() {
         Image image = new Image(getClass().getResourceAsStream("createTable.png"));
         addButton(new ImageView(image), event -> {
+            buttonsWithImages.get(1).setEffect(null);
             ComponentService.getComponentService().addComponent();
             Component.setState(MoveState.getMoveState());
         });
@@ -85,6 +86,13 @@ public class ButtonService {
             }
 
         });
+    }
+
+    public void clearEffects() {
+        for (ImageView i :
+                buttonsWithImages) {
+            i.setEffect(null);
+        }
     }
 
     private boolean addButton(ImageView image, EventHandler event) {

@@ -43,6 +43,7 @@ public class ComponentService {
         pane.getChildren().remove(component.getGridPane());
         pane.getChildren().removeAll(component.getUpCircles());
         pane.getChildren().removeAll(component.getDownCircles());
+        ButtonService.getButtonService().clearEffects();
         return components.remove(component);
     }
 
