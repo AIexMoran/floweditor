@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import com.alex.moran.service.ButtonService;
 import com.alex.moran.service.ComponentService;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -26,6 +27,7 @@ public abstract class Component {
     protected double m_nMouseX;
     protected static int show = 80;
     protected GridPane gridPane;
+    protected Label label;
     private static ComponentState state = MoveState.getMoveState();
     private int countLines = 0;
     private int visibleCircles = 1;
@@ -262,6 +264,10 @@ public abstract class Component {
 
     public double getHeight() {
         return height;
+    }
+
+    public Label getLabel() {
+        return label;
     }
 
     @Override

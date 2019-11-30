@@ -42,8 +42,10 @@ public class ThreatComponent extends Component {
     }
 
     public void addElements() {
-        Label label = new Label("  THIS IS GRIDPANE");
-        label.setFont(new Font("Arial", 16));
+        this.label = new Label("Component");
+        this.label.setWrapText(true);
+        this.label.setStyle("-fx-padding: 7px;");
+        this.label.setFont(new Font("Arial", 16));
         gridPane.add(label, 0, 0);
     }
 

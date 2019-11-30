@@ -2,10 +2,7 @@
 package com.alex.moran.service;
 
 import com.alex.moran.model.component.Component;
-import com.alex.moran.model.component.state.CreateLineState;
-import com.alex.moran.model.component.state.DeleteState;
-import com.alex.moran.model.component.state.FillColorState;
-import com.alex.moran.model.component.state.MoveState;
+import com.alex.moran.model.component.state.*;
 import com.alex.moran.model.xml.SaveXml;
 import com.alex.moran.model.xml.UploadXml;
 import java.io.File;
@@ -49,7 +46,7 @@ public class ButtonService {
 
         glow.setLevel(1.2);
         addButton(new ImageView(image), event -> {
-            buttonsWithImages.get(1).setEffect(null);
+            clearEffects();
             ComponentService.getComponentService().addComponent();
             Component.setState(MoveState.getMoveState());
         });
@@ -71,6 +68,16 @@ public class ButtonService {
                 Component.setState(MoveState.getMoveState());
             } else {
                 Component.setState(FillColorState.getFillColorState());
+            }
+        });
+        image = new Image(getClass().getResourceAsStream("editText.png"));
+        addButton(new ImageView(image), event -> {
+            buttonsWithImages.get(3).setEffect(glow);
+            if (Component.getState().equals(EditTextState.getEditTextState())) {
+                buttonsWithImages.get(3).setEffect(null);
+                Component.setState(MoveState.getMoveState());
+            } else {
+                Component.setState(EditTextState.getEditTextState());
             }
         });
         image = new Image(getClass().getResourceAsStream("save.png"));
