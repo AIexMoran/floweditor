@@ -5,13 +5,12 @@ import com.alex.moran.model.component.Component.ComponentCircle;
 import com.alex.moran.model.component.state.DeleteState;
 import com.alex.moran.model.component.state.MoveState;
 import com.alex.moran.service.ComponentService;
+
 import java.util.Objects;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.CubicCurve;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Shape;
-import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.*;
 
 public class ComponentPair {
 
@@ -72,10 +71,15 @@ public class ComponentPair {
     public static void disableFocusLines(Component component) {
         for (ComponentPair pair :
                 ComponentService.getComponentService().getPairs()) {
-            if (pair.contain(component)) {
-                pair.firstComponentCircle.getCircle().setFill(Color.SALMON);
-                pair.secondComponentCircle.getCircle().setFill(Color.SALMON);
-                pair.cubicCurve.setStroke(Color.BLACK);
+            pair.cubicCurve.setStroke(Color.BLACK);
+        }
+        for (Component c :
+                ComponentService.getComponentService().getComponents()) {
+            Circle[] upCircles = c.getUpCircles();
+            Circle[] downCircles = c.getDownCircles();
+            for (int i = 0; i < c.getUpCircles().length; i++) {
+                upCircles[i].setFill(Color.SALMON);
+                downCircles[i].setFill(Color.SALMON);
             }
         }
     }
@@ -94,11 +98,11 @@ public class ComponentPair {
     public Component getSecondComponent() {
         return secondComponent;
     }
-    
+
     public ComponentCircle getFirstComponentCircle() {
         return firstComponentCircle;
     }
-    
+
     public ComponentCircle getSecondComponentCircle() {
         return secondComponentCircle;
     }
@@ -222,10 +226,9 @@ public class ComponentPair {
                 !Objects.equals(this.secondComponent, other.firstComponent)) {
             return false;
         }
-        
+
         return true;
     }
-
 
 
 }
