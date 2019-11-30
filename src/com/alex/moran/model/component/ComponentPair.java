@@ -7,6 +7,7 @@ import com.alex.moran.model.component.state.MoveState;
 import com.alex.moran.service.ComponentService;
 import java.util.Objects;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
@@ -56,6 +57,28 @@ public class ComponentPair {
 //        initCubicCurve();
 //        updateLine();
 //    }
+
+    public static void setFocusLines(Component component) {
+        for (ComponentPair pair :
+                ComponentService.getComponentService().getPairs()) {
+            if (pair.contain(component)) {
+                pair.firstComponentCircle.getCircle().setFill(Color.rgb(55, 153, 137));
+                pair.secondComponentCircle.getCircle().setFill(Color.rgb(55, 153, 137));
+                pair.cubicCurve.setStroke(Color.rgb(55, 153, 137));
+            }
+        }
+    }
+
+    public static void disableFocusLines(Component component) {
+        for (ComponentPair pair :
+                ComponentService.getComponentService().getPairs()) {
+            if (pair.contain(component)) {
+                pair.firstComponentCircle.getCircle().setFill(Color.SALMON);
+                pair.secondComponentCircle.getCircle().setFill(Color.SALMON);
+                pair.cubicCurve.setStroke(Color.BLACK);
+            }
+        }
+    }
 
     public void addLines() {
         firstComponentCircle.setPair(true);

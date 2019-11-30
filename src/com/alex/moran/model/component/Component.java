@@ -18,6 +18,7 @@ import javafx.scene.shape.Circle;
 
 public abstract class Component {
     public static final String[] colors = new String[4];
+    public boolean isFocus;
     protected String title;
     protected double width;
     protected double height;
@@ -111,6 +112,20 @@ public abstract class Component {
         colors[1] = "-fx-background-color: #48b84f;";
         colors[2] = "-fx-background-color: #acb848;";
         colors[3] = "-fx-background-color: #b84848;";
+    }
+
+    public void disableFocus() {
+        gridPane.setStyle(colors[color]
+                + "-fx-border-radius: 12 12 12 12;"
+                + "-fx-background-radius: 12 12 12 12");
+    }
+
+    public void setFocus() {
+        gridPane.setStyle("-fx-border-color: #379989;"
+                + "-fx-border-width: 3px;"
+                + colors[color]
+                + "-fx-border-radius: 12 12 12 12;"
+                + "-fx-background-radius: 12 12 12 12");
     }
 
     public void setStyleColor(String color) {
