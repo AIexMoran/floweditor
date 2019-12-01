@@ -259,6 +259,24 @@ public abstract class Component {
         for (int i = 0; i < downCircles.length; i++) {
             downCircles[i].getCircle().setVisible(false);
         }
+        for (int i = 0; i < downCircles.length; i++) {
+            if (downCircles[i].hasPair()) {
+                if (i + 2 >= 4) {
+                    visibleDownCircles = 4;
+                } else {
+                    visibleDownCircles = i + 2;
+                }
+            }
+        }
+        for (int i = 0; i < upCircles.length; i++) {
+            if (upCircles[i].hasPair()) {
+                if (i + 2 >= 4) {
+                    visibleUpCircles = 4;
+                } else {
+                    visibleUpCircles = i + 2;
+                }
+            }
+        }
         for (int i = 0; i < visibleUpCircles; i++) {
             upCircles[i].getCircle().setVisible(true);
         }

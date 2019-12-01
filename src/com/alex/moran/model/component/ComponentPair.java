@@ -9,7 +9,6 @@ import com.alex.moran.service.ComponentService;
 import java.util.Objects;
 
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 
 public class ComponentPair {

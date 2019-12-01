@@ -8,7 +8,6 @@ import com.alex.moran.model.component.ThreatComponent;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 
