@@ -3,6 +3,7 @@ package com.alex.moran.model.component.state;
 import com.alex.moran.model.component.Component;
 import com.alex.moran.service.ButtonService;
 import com.alex.moran.service.ComponentService;
+import com.alex.moran.tools.Tools;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -39,8 +40,7 @@ public class EditTextState extends ComponentState {
         cancleButton = new Button("Cancel");
         BorderPane pane = new BorderPane();
         BorderPane buttonPane = new BorderPane();
-        Scene scene = new Scene(pane, 300, 100);
-        Stage stage = new Stage();
+        Stage stage = Tools.createWindow("Edit component text", pane, 300, 100);
 
         textField.setWrapText(true);
         okButton.setPrefSize(40, 20);
@@ -56,9 +56,6 @@ public class EditTextState extends ComponentState {
         buttonPane.setRight(cancleButton);
         pane.setCenter(textField);
         pane.setBottom(buttonPane);
-        stage.setTitle("Edit component text");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 

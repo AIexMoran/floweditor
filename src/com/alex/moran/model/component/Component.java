@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public abstract class Component {
-    public static final String[] colors = new String[4];
+    public static final String[] colors = new String[20];
     public boolean isFocus;
     protected String title;
     protected double width;
@@ -112,6 +112,22 @@ public abstract class Component {
         colors[1] = "-fx-background-color: #48b84f;";
         colors[2] = "-fx-background-color: #acb848;";
         colors[3] = "-fx-background-color: #b84848;";
+        colors[4] = "-fx-background-color: #875b5b;";
+        colors[5] = "-fx-background-color: #875b84;";
+        colors[6] = "-fx-background-color: #635b87;";
+        colors[7] = "-fx-background-color: #5b8780;";
+        colors[8] = "-fx-background-color: #62875b;";
+        colors[9] = "-fx-background-color: #87855b;";
+        colors[10] = "-fx-background-color: #c42525;";
+        colors[11] = "-fx-background-color: #c42595;";
+        colors[12] = "-fx-background-color: #8525c4;";
+        colors[13] = "-fx-background-color: #4825c4;";
+        colors[14] = "-fx-background-color: #2587c4;";
+        colors[15] = "-fx-background-color: #25c49f;";
+        colors[16] = "-fx-background-color: #25c448;";
+        colors[17] = "-fx-background-color: #82c425;";
+        colors[18] = "-fx-background-color: #c4aa25;";
+        colors[19] = "-fx-background-color: #c43525;";
     }
 
     public void disableFocus() {

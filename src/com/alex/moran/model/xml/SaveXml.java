@@ -52,7 +52,6 @@ public class SaveXml {
         Element rootElement = doc.createElement("floweditor");
         Element componentsElement = doc.createElement("components");
         for (Component component : ComponentService.getComponentService().getComponents()) {
-            System.out.println("component");
             Element componentElement = doc.createElement("component");
             Element idElement = doc.createElement("id");
             Element xElement = doc.createElement("x");
