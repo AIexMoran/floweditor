@@ -84,8 +84,8 @@ public class ComponentPair {
     }
 
     public void addLines() {
-        firstComponentCircle.setPair(true);
-        secondComponentCircle.setPair(true);
+        firstComponentCircle.addPairs();
+        secondComponentCircle.addPairs();
         firstComponent.update();
         secondComponent.update();
     }

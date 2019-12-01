@@ -82,8 +82,8 @@ public class ComponentService {
     }
 
     public boolean removeLine(ComponentPair pair) {
-        pair.getFirstComponentCircle().setPair(false);
-        pair.getSecondComponentCircle().setPair(false);
+        pair.getFirstComponentCircle().substractPairs();
+        pair.getSecondComponentCircle().substractPairs();
         pair.getFirstComponent().update();
         pair.getSecondComponent().update();
         pane.getChildren().remove(pair.getLine());

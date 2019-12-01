@@ -407,6 +407,7 @@ public abstract class Component {
         
         private boolean up;
         private boolean pair;
+        private int pairs;
         private Circle circle = new Circle(0, 0, 9);
         private int id;
         private Component component;
@@ -424,13 +425,21 @@ public abstract class Component {
         public Component getComponent() {
             return component;
         }
+
+        public void addPairs() {
+            pairs++;
+        }
+
+        public void substractPairs() {
+            pairs--;
+        }
         
         public void setPair(boolean pair) {
             this.pair = pair;
         }
         
         public boolean hasPair() {
-            return pair;
+            return pairs > 0;
         }
         
         public boolean isUp() {
