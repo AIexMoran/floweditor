@@ -4,12 +4,14 @@ package com.alex.moran.model.xml;
 import com.alex.moran.model.component.Component;
 import com.alex.moran.model.component.ComponentPair;
 import com.alex.moran.service.ComponentService;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
+
 import org.w3c.dom.*;
 
 public class SaveXml {
@@ -40,6 +42,7 @@ public class SaveXml {
 
     public void init() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
         try {
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
@@ -51,6 +54,7 @@ public class SaveXml {
         Document doc = builder.newDocument();
         Element rootElement = doc.createElement("floweditor");
         Element componentsElement = doc.createElement("components");
+
         for (Component component : ComponentService.getComponentService().getComponents()) {
             Element componentElement = doc.createElement("component");
             Element idElement = doc.createElement("id");
@@ -78,6 +82,7 @@ public class SaveXml {
             Element secondComponentElement = doc.createElement("secondComponent");
             Element firstCircleElement = doc.createElement("firstCircle");
             Element secondCircleElement = doc.createElement("secondCircle");
+
             firstCircleElement.setAttribute("id", componentPair.getFirstComponentCircle().getId() + "");
             secondCircleElement.setAttribute("id", componentPair.getSecondComponentCircle().getId() + "");
             firstCircleElement.appendChild(doc.createTextNode(componentPair.getFirstComponentCircle().isUp() + ""));
@@ -92,14 +97,12 @@ public class SaveXml {
         }
         rootElement.appendChild(componentsElement);
         rootElement.appendChild(componentPairsElement);
-        
         doc.appendChild(rootElement);
 
         Transformer t = TransformerFactory.newInstance().newTransformer();
         t.setOutputProperty(OutputKeys.METHOD, "xml");
         t.setOutputProperty(OutputKeys.INDENT, "yes");
         t.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(fileName)));
-
     }
 
 }

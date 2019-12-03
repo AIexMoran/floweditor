@@ -2,17 +2,12 @@ package com.alex.moran.model.component.state;
 
 import com.alex.moran.model.component.Component;
 import com.alex.moran.service.ButtonService;
-import com.alex.moran.service.ComponentService;
 import com.alex.moran.tools.Tools;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class EditTextState extends ComponentState {
@@ -20,8 +15,7 @@ public class EditTextState extends ComponentState {
     private static EditTextState instance;
     private static TextArea textField;
     private static Button okButton;
-    private static Button cancleButton;
-    private static boolean isEdited;
+    private static Button cancelButton;
 
     private EditTextState() {
 
@@ -37,7 +31,7 @@ public class EditTextState extends ComponentState {
     public void createStage(Label label) {
         textField = new TextArea();
         okButton = new Button("Ok");
-        cancleButton = new Button("Cancel");
+        cancelButton = new Button("Cancel");
         BorderPane pane = new BorderPane();
         BorderPane buttonPane = new BorderPane();
         Stage stage = Tools.createWindow("Edit component text", pane, 300, 100);
@@ -48,12 +42,12 @@ public class EditTextState extends ComponentState {
             label.setText(textField.getText());
             stage.close();
         });
-        cancleButton.setPrefSize(80, 20);
-        cancleButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        cancelButton.setPrefSize(80, 20);
+        cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             stage.close();
         });
         buttonPane.setLeft(okButton);
-        buttonPane.setRight(cancleButton);
+        buttonPane.setRight(cancelButton);
         pane.setCenter(textField);
         pane.setBottom(buttonPane);
         stage.show();

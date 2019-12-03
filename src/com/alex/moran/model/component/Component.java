@@ -4,6 +4,7 @@ package com.alex.moran.model.component;
 import com.alex.moran.model.component.state.ComponentState;
 import com.alex.moran.model.component.state.CreateLineState;
 import com.alex.moran.model.component.state.MoveState;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public abstract class Component {
+
     public static final String[] colors = new String[20];
     public boolean isFocus;
     protected String title;
@@ -53,12 +55,16 @@ public abstract class Component {
 
     public void init() {
         DropShadow dropShadow = new DropShadow();
+        label = new Label("Component");
+        gridPane = new GridPane();
+
         dropShadow.setRadius(20.0);
         dropShadow.setOffsetX(0);
         dropShadow.setOffsetY(0);
         dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
         for (int i = 0; i < upCircles.length; i++) {
             upCircles[i] = new ComponentCircle(true, i, this);
+
             upCircles[i].circle.setEffect(dropShadow);
             upCircles[i].getCircle().setVisible(false);
             upCircles[i].getCircle().setFill(Color.SALMON);
@@ -91,8 +97,6 @@ public abstract class Component {
                 circleState.onPress(event, this, tmpComponentCircle);
             });
         }
-        label = new Label("Component");
-        gridPane = new GridPane();
         gridPane.setOnMouseReleased(event -> {
             state.onReleased(event, this);
         });
@@ -153,11 +157,11 @@ public abstract class Component {
     public GridPane getGridPane() {
         return gridPane;
     }
-    
+
     public ComponentCircle[] getUpComponentCircles() {
         return upCircles;
     }
-    
+
     public ComponentCircle[] getDownComponentCircles() {
         return downCircles;
     }
@@ -165,6 +169,7 @@ public abstract class Component {
     public Circle[] getUpCircles() {
         updateCircles();
         Circle[] circles = new Circle[upCircles.length];
+
         for (int i = 0; i < circles.length; i++) {
             circles[i] = upCircles[i].getCircle();
         }
@@ -174,28 +179,22 @@ public abstract class Component {
     public Circle[] getDownCircles() {
         updateCircles();
         Circle[] circles = new Circle[downCircles.length];
+
         for (int i = 0; i < circles.length; i++) {
             circles[i] = downCircles[i].getCircle();
         }
         return circles;
     }
-    
-    public void addCountUpLines() {
-        
-    }
-    
-    public void addCountDownLines() {
-        
-    }
-    
+
     public void update() {
         visibleUpCircles = 1;
         visibleDownCircles = 1;
+
         for (int i = 0; i < upCircles.length - 1; i++) {
             if (upCircles[i].hasPair()) {
                 visibleUpCircles++;
             }
-        }        
+        }
         for (int i = 0; i < downCircles.length - 1; i++) {
             if (downCircles[i].hasPair()) {
                 visibleDownCircles++;
@@ -204,49 +203,13 @@ public abstract class Component {
         updateCircles();
     }
 
-    public void addCountLines() {
-        if (visibleCircles < 4) {
-            visibleCircles++;
-        }
-        countLines++;
-        updateCircles();
-    }
-
-    public boolean paneContainsPoint(double x, double y) {
-        if (gridPane.getLayoutX() < x && x < gridPane.getLayoutX() + width
-                && gridPane.getLayoutY() < y && y < gridPane.getLayoutY() + height) {
-            return true;
-        }
-        return false;
-    }
-
-    public void substractCountLines() {
-        countLines--;
-        if (countLines < 3) {
-            visibleCircles--;
-        }
-        update();
-        updateCircles();
-    }
-
-    public int getCountLines() {
-        return countLines;
-    }
-
     public double getAddX(ComponentCircle componentCircle) {
-        double addX = 0;
-        addX = componentCircle.getCircle().getCenterX() - gridPane.getLayoutX();
-        return addX;
-    }
-    
-    public double getAddX() {
-        double addX = 0;
-        addX = upCircles[countLines % 4].getCircle().getCenterX() - gridPane.getLayoutX();
-        return addX;
+        return componentCircle.getCircle().getCenterX() - gridPane.getLayoutX();
     }
 
     public void updateCircles() {
         double addX = width / 5;
+
         for (int i = 1; i < upCircles.length + 1; i++) {
             upCircles[i - 1].getCircle().setCenterX(gridPane.getLayoutX() + addX * i);
             downCircles[i - 1].getCircle().setCenterX(gridPane.getLayoutX() + addX * i);
@@ -325,14 +288,6 @@ public abstract class Component {
         this.m_nMouseX = m_nMouseX;
     }
 
-    public double getWidth() {
-        return width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
     public Label getLabel() {
         return label;
     }
@@ -376,6 +331,7 @@ public abstract class Component {
     @Override
     public int hashCode() {
         int hash = 7;
+
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.width) ^ (Double.doubleToLongBits(this.width) >>> 32));
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.height) ^ (Double.doubleToLongBits(this.height) >>> 32));
         hash = 53 * hash + Objects.hashCode(this.gridPane);
@@ -386,7 +342,7 @@ public abstract class Component {
         hash = 53 * hash + Arrays.deepHashCode(this.downCircles);
         return hash;
     }
-    
+
     public ComponentCircle getComponentCircle(boolean up, int id) {
         if (up) {
             return upCircles[id];
@@ -404,24 +360,24 @@ public abstract class Component {
     }
 
     public class ComponentCircle {
-        
+
         private boolean up;
         private boolean pair;
         private int pairs;
         private Circle circle = new Circle(0, 0, 9);
         private int id;
         private Component component;
-        
+
         public ComponentCircle(boolean up, int id, Component component) {
             this.up = up;
             this.id = id;
             this.component = component;
         }
-        
+
         public int getId() {
             return id;
         }
-        
+
         public Component getComponent() {
             return component;
         }
@@ -430,29 +386,26 @@ public abstract class Component {
             pairs++;
         }
 
-        public void substractPairs() {
+        public void subtractPairs() {
             pairs--;
         }
-        
-        public void setPair(boolean pair) {
-            this.pair = pair;
-        }
-        
+
         public boolean hasPair() {
             return pairs > 0;
         }
-        
+
         public boolean isUp() {
             return up;
         }
-        
+
         public Circle getCircle() {
             return circle;
         }
 
         @Override
         public int hashCode() {
-            int hash = 7;
+            int hash = 7; //TODO
+
             return hash;
         }
 
@@ -476,7 +429,7 @@ public abstract class Component {
             }
             return true;
         }
-        
+
     }
 
 }

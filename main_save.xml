@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<floweditor>
+<components>
+<component>
+<id>1068302374</id>
+<x>549.0</x>
+<y>29.0</y>
+<text>Main component #3</text>
+<color>10</color>
+</component>
+<component>
+<id>-1004171222</id>
+<x>89.0</x>
+<y>26.0</y>
+<text>Main component #1</text>
+<color>1</color>
+</component>
+<component>
+<id>790045957</id>
+<x>318.0</x>
+<y>27.0</y>
+<text>Main component #2
+</text>
+<color>10</color>
+</component>
+<component>
+<id>1978847563</id>
+<x>306.0</x>
+<y>457.0</y>
+<text>Sub component #3.2</text>
+<color>1</color>
+</component>
+<component>
+<id>522608026</id>
+<x>80.0</x>
+<y>455.0</y>
+<text>Sub component #3.1
+#333333333</text>
+<color>2</color>
+</component>
+<component>
+<id>1703078638</id>
+<x>771.0</x>
+<y>28.0</y>
+<text>Main component #3</text>
+<color>2</color>
+</component>
+<component>
+<id>584788150</id>
+<x>170.0</x>
+<y>248.0</y>
+<text>Sub component #2.1
+#0000000</text>
+<color>1</color>
+</component>
+<component>
+<id>32250387</id>
+<x>489.0</x>
+<y>252.0</y>
+<text>Sub component #2.2
+#1111111</text>
+<color>10</color>
+</component>
+<component>
+<id>1979405304</id>
+<x>749.0</x>
+<y>453.0</y>
+<text>Sub component #3.3</text>
+<color>1</color>
+</component>
+</components>
+<componentPairs>
+<componentPair>
+<firstComponent>1703078638</firstComponent>
+<secondComponent>32250387</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>1703078638</firstComponent>
+<secondComponent>1979405304</secondComponent>
+<firstCircle id="1">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>32250387</firstComponent>
+<secondComponent>1979405304</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>1068302374</firstComponent>
+<secondComponent>32250387</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="1">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>790045957</firstComponent>
+<secondComponent>32250387</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>32250387</firstComponent>
+<secondComponent>1978847563</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>584788150</firstComponent>
+<secondComponent>1978847563</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>584788150</firstComponent>
+<secondComponent>522608026</secondComponent>
+<firstCircle id="1">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>-1004171222</firstComponent>
+<secondComponent>522608026</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="1">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>-1004171222</firstComponent>
+<secondComponent>584788150</secondComponent>
+<firstCircle id="1">false</firstCircle>
+<secondCircle id="0">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>790045957</firstComponent>
+<secondComponent>584788150</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="1">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>-1004171222</firstComponent>
+<secondComponent>32250387</secondComponent>
+<firstCircle id="2">false</firstCircle>
+<secondCircle id="2">true</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>1978847563</firstComponent>
+<secondComponent>1979405304</secondComponent>
+<firstCircle id="0">false</firstCircle>
+<secondCircle id="0">false</secondCircle>
+</componentPair>
+<componentPair>
+<firstComponent>790045957</firstComponent>
+<secondComponent>1068302374</secondComponent>
+<firstCircle id="1">false</firstCircle>
+<secondCircle id="0">false</secondCircle>
+</componentPair>
+</componentPairs>
+</floweditor>

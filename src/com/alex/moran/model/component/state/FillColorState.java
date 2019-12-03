@@ -26,13 +26,14 @@ public class FillColorState extends ComponentState {
 
     public FlowPane getColorsPane(Component component) {
         FlowPane pane = new FlowPane();
+        Button[] colorButtons = new Button[Component.colors.length];
+
         pane.setVgap(2);
         pane.setHgap(2);
-
-        Button[] colorButtons = new Button[Component.colors.length];
         for (int i = 0; i < colorButtons.length; i++) {
             final int finalI = i;
             colorButtons[i] = new Button();
+
             colorButtons[i].setPrefSize(30, 30);
             colorButtons[i].setStyle(Component.colors[i]);
             pane.getChildren().add(colorButtons[i]);

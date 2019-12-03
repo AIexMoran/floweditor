@@ -4,7 +4,9 @@ package com.alex.moran.model.component.state;
 import com.alex.moran.model.component.Component;
 import com.alex.moran.model.component.ComponentPair;
 import com.alex.moran.service.ComponentService;
+
 import java.util.List;
+
 import javafx.scene.input.MouseEvent;
 
 public class DeleteState extends ComponentState {
@@ -44,7 +46,7 @@ public class DeleteState extends ComponentState {
 
     @Override
     public void onReleased(MouseEvent event, Component component) {
-        
+
     }
 
 }

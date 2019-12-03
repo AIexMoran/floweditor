@@ -28,7 +28,7 @@ public class MoveState extends ComponentState {
             component.isFocus = false;
             component.disableFocus();
             ComponentPair.disableFocusLines(component);
-        } else if (focusedComponent != null && !component.isFocus) {
+        } else if (focusedComponent != null) {
             focusedComponent.disableFocus();
             focusedComponent.isFocus = false;
             ComponentPair.disableFocusLines(focusedComponent);

@@ -5,8 +5,10 @@ import com.alex.moran.model.component.Component;
 import com.alex.moran.model.component.Component.ComponentCircle;
 import com.alex.moran.model.component.ComponentPair;
 import com.alex.moran.service.ComponentService;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
@@ -33,9 +35,10 @@ public class CreateLineState {
     public void onPress(MouseEvent event, Component component, ComponentCircle circle) {
         pairs = new ArrayList<>();
         componentCircles = new ArrayList<>();
+        line = new Line();
+
         pairs.add(component);
         componentCircles.add(circle);
-        line = new Line();
         ComponentService.getComponentService().addTmpLine(line);
         line.setStrokeWidth(5);
         line.setStartX(event.getSceneX());
@@ -51,6 +54,7 @@ public class CreateLineState {
 
     public void onReleased(MouseEvent event, Component component) {
         ComponentService.getComponentService().removeTmpLine(line);
+
         for (Component c : ComponentService.getComponentService().getComponents()) {
             for (ComponentCircle comCircle : c.getUpComponentCircles()) {
                 if (comCircle.getCircle().contains(event.getSceneX(), event.getSceneY())) {
@@ -70,16 +74,6 @@ public class CreateLineState {
                     }
                 }
             }
-//            if (c.paneContainsPoint(event.getSceneX(), event.getSceneY())) {
-//                if (!pairs.contains(c)) {
-//                    pairs.add(c);
-//                    if (pairs.size() == 2) {
-//                        ComponentService.getComponentService().addPairComponents(pairs.get(0), pairs.get(1));
-//                        Component.setState(MoveState.getMoveState());
-//                        pairs.clear();
-//                    }
-//                }
-//            }
         }
         for (ComponentPair p : ComponentService.getComponentService().getPairs()) {
             p.updateLine();

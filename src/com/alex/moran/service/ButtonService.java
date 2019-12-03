@@ -5,9 +5,11 @@ import com.alex.moran.model.component.Component;
 import com.alex.moran.model.component.state.*;
 import com.alex.moran.model.xml.SaveXml;
 import com.alex.moran.model.xml.UploadXml;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
@@ -22,7 +24,6 @@ import javafx.stage.FileChooser;
 public class ButtonService {
 
     private static ButtonService instance;
-
     private final List<Button> buttons;
     private final List<ImageView> buttonsWithImages;
     private GridPane gridPane;
@@ -30,6 +31,7 @@ public class ButtonService {
     private ButtonService() {
         buttons = new ArrayList<>();
         buttonsWithImages = new ArrayList<>();
+
         setButtons();
     }
 
@@ -129,9 +131,10 @@ public class ButtonService {
 
     public GridPane getButtonsPane() {
         gridPane = new GridPane();
+        DropShadow dropShadow = new DropShadow();
+
         gridPane.setStyle("-fx-background-color: #3b3b3b;");
         gridPane.setVgap(10);
-        DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(7.0);
         dropShadow.setOffsetX(4.0);
         dropShadow.setOffsetY(4.0);

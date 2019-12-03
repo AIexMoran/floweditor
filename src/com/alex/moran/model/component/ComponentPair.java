@@ -14,17 +14,14 @@ import javafx.scene.shape.*;
 public class ComponentPair {
 
     private static int count = 0;
-
     private final Component firstComponent;
     private final Component secondComponent;
     private final ComponentCircle firstComponentCircle;
     private final ComponentCircle secondComponentCircle;
-
     private final CubicCurve cubicCurve;
     private final Line line;
     private double firstX;
     private double secondX;
-
     private double firstY;
     private double secondY;
     private double firstAddX;
@@ -36,25 +33,13 @@ public class ComponentPair {
         this.firstComponentCircle = firstComponentCircle;
         this.secondComponentCircle = secondComponentCircle;
         cubicCurve = new CubicCurve();
-//        cubicCurve.setStyle("-fx-stroke-dash-array: 2 12 12 2;");
         firstAddX = firstComponent.getAddX(firstComponentCircle);
         secondAddX = secondComponent.getAddX(secondComponentCircle);
         line = new Line();
+
         initCubicCurve();
         updateLine();
     }
-
-//    public ComponentPair(Component firstComponent, Component secondComponent) {
-//        this.firstComponent = firstComponent;
-//        this.secondComponent = secondComponent;
-//        cubicCurve = new CubicCurve();
-//        cubicCurve.setStyle("-fx-stroke-dash-array: 2 12 12 2;");
-//        firstAddX = firstComponent.getAddX();
-//        secondAddX = secondComponent.getAddX();
-//        line = new Line();
-//        initCubicCurve();
-//        updateLine();
-//    }
 
     public static void setFocusLines(Component component) {
         for (ComponentPair pair :
@@ -76,6 +61,7 @@ public class ComponentPair {
                 ComponentService.getComponentService().getComponents()) {
             Circle[] upCircles = c.getUpCircles();
             Circle[] downCircles = c.getDownCircles();
+
             for (int i = 0; i < c.getUpCircles().length; i++) {
                 upCircles[i].setFill(Color.SALMON);
                 downCircles[i].setFill(Color.SALMON);
@@ -125,24 +111,10 @@ public class ComponentPair {
     }
 
     public void updateLine() {
-//        firstX = firstComponent.getGridPane().getLayoutX();
-//        firstY = firstComponent.getGridPane().getLayoutY();
-//        secondX = secondComponent.getGridPane().getLayoutX();
-//        secondY = secondComponent.getGridPane().getLayoutY();
-//        firstX += firstAddX;
-//        secondX += secondAddX;
         firstX = firstComponentCircle.getCircle().getCenterX();
         secondX = secondComponentCircle.getCircle().getCenterX();
         firstY = firstComponentCircle.getCircle().getCenterY();
         secondY = secondComponentCircle.getCircle().getCenterY();
-//        if (firstY < secondY && Math.abs(firstY - secondY) >= 100) {
-//            firstY += firstComponent.getHeight();
-//        } else if (firstY > secondY && Math.abs(firstY - secondY) >= 100) {
-//            secondY += firstComponent.getHeight();
-//        } else if (Math.abs(firstY - secondY) < 100) {
-//            firstY += firstComponent.getHeight();
-//            secondY += secondComponent.getHeight();
-//        }
         if (Math.abs(firstY - secondY) < 200) {
             cubicCurve.setControlY1(secondY + 40);
             cubicCurve.setControlX1(firstX);
@@ -154,33 +126,6 @@ public class ComponentPair {
             cubicCurve.setControlY2(firstY - 10);
             cubicCurve.setControlX2(secondX - 10);
         }
-//        if (firstX <= secondX && Math.abs(firstY - secondY) < 200 && Math.abs(firstX - secondX) > 100) {
-//            firstY += firstComponent.getHeight() / 2;
-//            firstX += firstComponent.getWidth();
-//            secondY += secondComponent.getHeight() / 2;
-//            upDown = true;
-//        } else if (firstX >= secondX && Math.abs(firstY - secondY) < 200 && Math.abs(firstX - secondX) > 100) {
-//            secondY += secondComponent.getHeight() / 2;
-//            secondX += secondComponent.getWidth();
-//            firstY += firstComponent.getHeight() / 2;
-//            upDown = true;
-//        } else if (firstX <= secondX && firstY <= secondY) {
-//            firstX += firstComponent.getWidth() / 2;
-//            firstY += firstComponent.getHeight();
-//            secondX += secondComponent.getWidth() / 2;
-//        } else if (firstX <= secondX && firstY >= secondY) {
-//            secondY += secondComponent.getHeight();
-//            secondX += secondComponent.getWidth() / 2;
-//            firstX += firstComponent.getWidth() / 2;
-//        } else if (firstX >= secondX && firstY <= secondY) {
-//            firstY += firstComponent.getHeight();
-//            firstX += firstComponent.getWidth() / 2;
-//            secondX += secondComponent.getWidth() / 2;
-//        } else if (firstX >= secondX && firstY >= secondY) {
-//            secondX += secondComponent.getWidth() / 2;
-//            secondY += secondComponent.getHeight();
-//            firstX += firstComponent.getWidth() / 2;
-//        }
         cubicCurve.setStartX(firstX);
         cubicCurve.setStartY(firstY);
         cubicCurve.setEndX(secondX);
@@ -201,7 +146,7 @@ public class ComponentPair {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 7; //TODO
         return hash;
     }
 
